@@ -12,14 +12,20 @@
 # Output: 0
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:
-      i = 0
+      i = 0 
+      space=False
       if len(s) == 0:
         return 0
-      rev = s[::-1]
-      for c in rev:
-        if c == " ":
-          return i
-        i += 1
+      for c in s:
+        if c != " ":
+          if not space:
+            i+=1
+          else: 
+            i=1
+            space=False
+        else:
+          space=True
+      return i
 
 test = Solution()
-print(test.lengthOfLastWord(" a"))
+print(test.lengthOfLastWord("a "))
